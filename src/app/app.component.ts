@@ -64,4 +64,18 @@ export class AppComponent {
 
 
   }
+
+
+  /*
+  Cette fonction
+   */
+  addContact(contact): void {
+    this.mesContacts.push(contact);
+
+  }
+
+
+
+
+
 }

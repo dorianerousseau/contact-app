@@ -27,6 +27,7 @@
     <!-- Liste des contacts -->
     <div class="col-sm-4">
       <div class="list-group">
+        <!-- fonction Angular (actionuser)="non de la fonction ()-->
         <a href="#"
            *ngFor="let contact of mesContacts"
            (click)="displayContact(contact)"
@@ -35,29 +36,14 @@
           {{ contact.name }}
         </a>
       </div> <!-- /.list-group -->
+      <app-new-contact (newContactEvent)="addContact($event)"></app-new-contact> <!-- tous le composant newContactComponent + (la sortie du contact) -->
     </div> <!-- /.col-sm-4 -->
-    <!-- fonction Angular (action)="non de la fonction ()-->
+
 
 
     <!--  Profil du contact -->
     <div class="col-sm-8">
-      <div class="jumbotron" *ngIf="contactProfil"> <!-- *ngIf = condition if angular -->
-        <h1 class="display-4">{{ contactProfil.name }}</h1>
-        <p class="lead">{{ contactProfil.email }}</p>
-        <p class="lead">{{ contactProfil.tel }}</p>
-        <hr class="my-4">
-        <!--
-        Exemple du Two Way DataBinding
-        bananainthebox = le model impact la vue & la vue impact le model -->
-        <input type="text"
-               [(ngModel)]="contactProfil.name"
-               class="form-control">
-      </div>
-      <div class="jumbotron" *ngIf="!contactProfil">
-        <h1 class="display-4">Mes contacts</h1>
-        <p class="lead">Choisissez un contact dans le menu à gauche.</p>
-        <hr class="my-4">
-      </div>
+      <app-profil [contactProfil]="contactProfil"></app-profil> <!-- tous le composant profilComponent + [l'entrée du profil]-->
     </div> <!-- /.col-sm-8 -->
 
   </div> <!-- /.row -->
